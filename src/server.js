@@ -13,13 +13,14 @@ app.use(cors());
 app.use('/api/v1/food', routeForFood);
 app.use('/api/v1/clothes', routeForClothes);
 
-app.use('*', notFoundHndler);
-app.use(errorHandler);
+
 
 app.get('/', (req, res) => {
     res.send('Hello world');
   });
-
+  
+  app.use('*', notFoundHndler);
+  app.use(errorHandler);
   module.exports = {
     server: app,
     start: (port) => {
