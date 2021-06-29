@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/dana-younis/basic-api-server/issues"
   },
-  "homepage": "https://github.com/dana-younis/basic-api-server#readme"
+  "homepage": "https://github.com/dana-younis/basic-api-server#readme",
+  "dependencies": {
+    "morgan": "^1.10.0"
+  }
 }
