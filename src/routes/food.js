@@ -1,7 +1,7 @@
 'use strict';
 const express = require('express');
 const Food = require('../models/food.js');
-const food = new Food();//object
+const food = new Food();
 const router = express.Router();
 
 router.get('/', getFood);
@@ -17,14 +17,14 @@ function deleteFood(req, res) {
 }
 
 function updateFood(req, res) {
-    const foodObj = req.body;
-    const resObj = food.update(req.params.id, foodObj);
+    const objForFood = req.body;
+    const resObj = food.update(req.params.id, objForFood);
     res.json(resObj);
 }
 
 function createFood(req, res) {
-    const foodObj = req.body;
-    const resObj = food.create(foodObj);
+    const objForFood = req.body;
+    const resObj = food.create(objForFood);
     res.status(201).json(resObj);
 }
 

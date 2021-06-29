@@ -5,27 +5,24 @@ const morgan = require('morgan');
 const app = express();
 const notFoundHndler = require('./error-handlers/404.js');
 const errorHandler = require('./error-handlers/500.js');
-const foodRoutes = require('./routes/food.js');
-const clothesRoutes = require ('./routes/clothes.js');
-
-app.use(express.json());//post, put, patch
+const routeForFood = require('./routes/food.js');
+const routeForClothes = require ('./routes/clothes.js');
+app.use(express.json());
 app.use(morgan('dev'));
 app.use(cors());
-app.use('/api/v1/food', foodRoutes);
-app.use('/api/v1/clothes', clothesRoutes);
-// app.use('/',homeHandler);
+app.use('/api/v1/food', routeForFood);
+app.use('/api/v1/clothes', routeForClothes);
+
 app.use('*', notFoundHndler);
 app.use(errorHandler);
 
+app.get('/', (req, res) => {
+    res.send('Hello world');
+  });
 
-function homeHandler(req,res){
-res.send('Welcome to the server!');
-}
-
-module.exports = {
+  module.exports = {
     server: app,
     start: (port) => {
-        const PORT = port || 3000;
-        app.listen(PORT, () => console.log(`the server is up on ${PORT}`));
-    }
-}
+      app.listen(port, () => console.log(`Listening on ${port}`));
+    },
+  };
